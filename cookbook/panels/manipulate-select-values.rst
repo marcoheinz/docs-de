@@ -24,7 +24,7 @@ für die Anzeige kombiniert werden.
    
    <?php
    // contao/dca/<MM-Table-Name>.php
-   $GLOBALS['TL_DCA']['mm_events']['fields']['parentEvent'] = [ 
+   $GLOBALS['TL_DCA']['<MM-Table-Name>']['fields']['<Field-Column-Name>'] = [ 
     'options_callback' => function () { 
         $modelName = '<MM-Table-Name>'; 
         $factory   = $this->getContainer()->get('metamodels.factory'); 
