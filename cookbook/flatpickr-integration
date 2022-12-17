@@ -1,0 +1,33 @@
+
+
+Integration von Flatpickr für filter_fromto / filter_range 
+============================================================
+
+Einfache Datumsauswahl durch Integration von flatpickr durch Anpassung des Templates mm_filteritem_default
+
+Template mm_filteritem_default kopieren und umbenennen in bsp. mm_filteritem_flatpickr.
+Dieses Template an erster Stelle mit folgenden Zeilen ergänzen. Entsprechende Dateien findest du als Dowload auf auf https://flatpickr.js.org
+  
+<?php
+$GLOBALS['TL_JAVASCRIPT'][] = 'files/flatpickr/flatpickr.min.js';
+$GLOBALS['TL_JAVASCRIPT'][] = 'files/flatpickr/l10n/de.js';
+$GLOBALS['TL_JAVASCRIPT'][] = 'files/flatpickr/plugins/rangePlugin.js';
+$GLOBALS['TL_CSS'][] = 'files/flatpickr/flatpickr.min.css';
+?>
+
+Am Ende des Templates folgende Zeilen ergänzen.
+   
+<script>
+	flatpickr('#ctrl_startDate_0', {
+	locale: "de",
+	minDate: "today",
+	enableTime: false,
+	allowInput: true,
+	disableMobile: true,
+	dateFormat: "d.m.Y",
+	// Optional: defaultDate: ["today", new Date().fp_incr(14)],
+	"plugins": [new rangePlugin({ input: "#ctrl_startDate_1"})]
+});
+</script>
+
+Zum Schluß muss das geänderte Template noch im Filter fromto oder range ausgewählt werden.
